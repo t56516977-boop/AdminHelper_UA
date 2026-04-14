@@ -3,183 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdminHelper_UA — Офіційний сайт</title>
+    <title>AdminHelper_UA — Нова Ера Модерації</title>
     <style>
         :root {
             --primary: #5865F2;
-            --secondary: #2c2f33;
-            --success: #3ba55c;
-            --bg: #23272a;
+            --accent: #00d2ff;
+            --bg: #0f0f13;
+            --card-bg: rgba(255, 255, 255, 0.05);
             --text: #ffffff;
-            --gray: #b9bbbe;
         }
 
-        body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--bg); 
-            color: var(--text); 
-            text-align: center; 
-            margin: 0; 
+        * { box-sizing: border-box; transition: all 0.3s ease; }
+
+        body {
+            margin: 0;
             padding: 0;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(88, 101, 242, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 210, 255, 0.1) 0%, transparent 40%);
         }
 
-        .container { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+        /* Анімований фон з частинками */
+        .stars {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: url('https://amazonaws.com') repeat;
+            opacity: 0.3;
+            animation: move-stars 100s linear infinite;
+        }
 
-        /* Аватарка бота */
-        .bot-logo {
-            width: 120px;
-            height: 120px;
+        @keyframes move-stars {
+            from { background-position: 0 0; }
+            to { background-position: 10000px 5000px; }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        /* Шапка з логотипом */
+        header { text-align: center; margin-bottom: 80px; }
+
+        .bot-avatar {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 4px solid var(--primary);
-            box-shadow: 0 0 20px rgba(88, 101, 242, 0.5);
-            margin-bottom: 20px;
-            animation: bounce 2s infinite ease-in-out;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.5);
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 10px var(--primary));
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        h1 { 
-            color: var(--text); 
-            font-size: 3.5rem; 
-            margin: 10px 0; 
-            letter-spacing: -1px;
-        }
-
-        .subtitle { 
-            font-size: 1.4rem; 
-            color: var(--gray); 
-            max-width: 700px; 
-            margin: 0 auto 40px; 
-            line-height: 1.6;
-        }
-
-        /* Кнопки */
-        .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 50px; }
-        
-        .btn { 
-            display: inline-flex;
-            align-items: center;
-            padding: 16px 32px; 
-            background-color: var(--primary); 
-            color: white; 
-            text-decoration: none; 
-            border-radius: 12px; 
-            font-weight: bold; 
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn:hover { 
-            transform: scale(1.05) translateY(-5px); 
-            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.4); 
-        }
-
-        .btn-discord { background-color: #4f545c; }
-        .btn-dash { background-color: var(--success); }
-        .btn-dash:hover { box-shadow: 0 8px 25px rgba(59, 165, 92, 0.4); }
-
-        /* Предупреждение */
-        .warning-box { 
-            background: rgba(255, 166, 0, 0.05); 
-            border-left: 4px solid orange; 
-            padding: 25px; 
-            border-radius: 12px; 
-            max-width: 750px; 
-            margin: 0 auto 60px; 
-            color: #ffcc00; 
-            text-align: left;
-            font-size: 1.05rem;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Секция команд */
-        .commands { 
-            background: var(--secondary); 
-            padding: 40px; 
-            border-radius: 24px; 
-            text-align: left;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .commands h2 { 
-            text-align: center; 
-            font-size: 2rem; 
-            margin-bottom: 30px;
-            background: linear-gradient(90deg, #fff, var(--primary));
+        h1 {
+            font-size: 4.5rem;
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            letter-spacing: -2px;
         }
 
-        .command-card {
+        .tagline {
+            font-size: 1.5rem;
+            color: #b9bbbe;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        /* Блок кнопок */
+        .main-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-primary { 
+            background: var(--primary); 
+            color: white;
+            box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(88, 101, 242, 0.5); }
+
+        .btn-outline { 
+            background: rgba(255,255,255,0.05); 
+            color: white; 
+            backdrop-filter: blur(10px);
+        }
+        .btn-outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-5px); }
+
+        /* Секція функцій */
+        .features-grid {
             display: grid;
-            grid-template-columns: 150px 1fr;
-            padding: 15px;
-            border-bottom: 1px solid #40444b;
-            transition: background 0.2s;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 100px;
         }
 
-        .command-card:last-child { border-bottom: none; }
-        .command-card:hover { background: rgba(255,255,255,0.02); }
-
-        .cmd-name { color: var(--primary); font-family: 'Consolas', monospace; font-weight: bold; font-size: 1.2rem; }
-        .cmd-desc { color: var(--gray); font-size: 1.1rem; }
-
-        footer { 
-            margin-top: 80px; 
-            padding: 40px; 
-            color: var(--gray); 
-            font-size: 0.95rem; 
-            border-top: 1px solid var(--secondary); 
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .command-card { grid-template-columns: 1fr; gap: 5px; }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+        }
+
+        .feature-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: scale(1.02);
+            border-color: rgba(88, 101, 242, 0.3);
+        }
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: #a3a6aa;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Панель Увага */
+        .alert {
+            background: rgba(255, 166, 0, 0.1);
+            border: 1px solid rgba(255, 166, 0, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .alert-icon { font-size: 2rem; }
+
+        footer {
+            text-align: center;
+            padding: 100px 20px;
+            color: #58595b;
+            font-weight: 500;
+        }
+
+        /* Мобільна адаптація */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .container { padding: 60px 20px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="stars"></div>
+
     <div class="container">
-        <!-- Автоматическая аватарка бота -->
-        <img src="https://discordapp.com" 
-             onerror="this.src='https://discord.com'"
-             alt="Logo" class="bot-logo">
+        <header>
+            <img src="https://discordapp.com" 
+                 onerror="this.src='https://discord.com'"
+                 alt="AdminHelper_UA" class="bot-avatar">
+            <h1>AdminHelper_UA</h1>
+            <p class="tagline">Ваш сервер заслуговує на професійний захист та порядок.</p>
+        </header>
 
-        <h1>AdminHelper_UA</h1>
-        <p class="subtitle">Ваш надійний помічник у модерації та автоматизації. Створений для найкращих серверів Discord.</p>
-        
-        <div class="warning-box">
-            <strong>⚠️ Важлива юридична інформація:</strong><br>
-            Додаючи бота, ви погоджуєтесь з тим, що власник має доступ до керування ботом на вашому сервері, а саме: перегляд технічних логів та дистанційне оновлення/додавання команд у функціонал бота.
+        <div class="main-actions">
+            <a href="https://discord.com/oauth2/authorize?client_id=1493284402241732668" class="btn btn-primary">
+                <span>➕</span> Додати на сервер
+            </a>
+            <a href="https://discord.com" class="btn btn-outline">
+                <span>💬</span> Наш Discord
+            </a>
+            <!-- Тепер ця кнопка веде на сервер, де зручно керувати ботом -->
+            <a href="https://discord.com" class="btn btn-outline" style="border-color: var(--primary);">
+                <span>⚙️</span> Керування
+            </a>
         </div>
 
-        <div class="btn-group">
-            <!-- Ссылки уже вставлены -->
-            <a href="https://discord.com" class="btn">Додати на сервер</a>
-            <a href="https://discord.com" class="btn btn-discord">Наш Discord сервер</a>
-            <a href="https://discord.com&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fcallback&scope=identify+guilds" class="btn btn-dash">⚡ Панель керування</a>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🛡️ Модерація</h3>
+                <p>Потужні інструменти для банів, кіків та мутів. Автоматичний захист від спаму та шкідливих посилань.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Швидкість</h3>
+                <p>Бот написаний на сучасному коді, що забезпечує миттєву реакцію на команди без затримок.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 Статистика</h3>
+                <p>Слідкуйте за активністю вашого сервера, кількістю нових учасників та популярними каналами.</p>
+            </div>
         </div>
 
-        <div class="commands">
-            <h2>📜 Функціонал бота</h2>
-            <div class="command-card"><div class="cmd-name">/help</div><div class="cmd-desc">Повний посібник по використанню та налаштуванню</div></div>
-            <div class="command-card"><div class="cmd-name">/ban</div><div class="cmd-desc">Швидке та надійне блокування порушників</div></div>
-            <div class="command-card"><div class="cmd-name">/kick</div><div class="cmd-desc">Видалення учасників з сервера за порушення правил</div></div>
-            <div class="command-card"><div class="cmd-name">/clear</div><div class="cmd-desc">Миттєве очищення чату від спаму (до 100 повідомлень)</div></div>
-            <div class="command-card"><div class="cmd-name">/settings</div><div class="cmd-desc">Налаштування префіксів та систем логування</div></div>
+        <div class="alert">
+            <div class="alert-icon">⚠️</div>
+            <div>
+                <strong>Увага для власників:</strong> Додаючи бота, ви надаєте згоду на перегляд технічних налаштувань бота на вашому сервері для забезпечення стабільної роботи та оновлень.
+            </div>
         </div>
+
+        <footer>
+            &copy; 2026 AdminHelper_UA. Всі права захищені.<br>
+            Створено з любов'ю розробником t56516977-boop
+        </footer>
     </div>
-
-    <footer>
-        &copy; 2026 <b>AdminHelper_UA</b>. Усі права захищені.<br>
-        Розроблено розробником <span style="color: var(--primary);">t56516977-boop</span>
-    </footer>
 
 </body>
 </html>
