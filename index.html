@@ -3,33 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мій Discord Бот</title>
+    <title>AdminHelper_UA — Офіційний сайт</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #23272a; color: white; text-align: center; margin: 0; padding: 0; }
-        .container { padding: 50px; }
-        h1 { color: #5865F2; font-size: 3rem; }
-        p { font-size: 1.2rem; color: #b9bbbe; max-width: 600px; margin: 20px auto; }
-        .btn { display: inline-block; padding: 15px 30px; background-color: #5865F2; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; margin: 10px; }
-        .btn:hover { background-color: #4752c4; transform: scale(1.05); }
-        .warning-box { background: rgba(255, 166, 0, 0.1); border: 1px solid orange; padding: 20px; border-radius: 10px; max-width: 600px; margin: 30px auto; color: #ffcc00; }
-        footer { margin-top: 50px; color: #72767d; font-size: 0.9rem; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #23272a; color: white; text-align: center; margin: 0; padding: 0; }
+        .container { padding: 60px 20px; }
+        h1 { color: #5865F2; font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(88, 101, 242, 0.4); }
+        p.subtitle { font-size: 1.3rem; color: #b9bbbe; max-width: 700px; margin: 0 auto 40px; }
+        
+        .btn-group { margin-bottom: 40px; }
+        .btn { display: inline-block; padding: 18px 35px; background-color: #5865F2; color: white; text-decoration: none; border-radius: 10px; font-weight: bold; transition: 0.3s; margin: 10px; font-size: 1.1rem; }
+        .btn:hover { background-color: #4752c4; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .btn-discord { background-color: #4f545c; }
+        .btn-discord:hover { background-color: #3e4248; }
+
+        .warning-box { background: rgba(255, 166, 0, 0.1); border-left: 5px solid orange; padding: 20px; border-radius: 8px; max-width: 700px; margin: 0 auto 50px; color: #ffcc00; text-align: left; line-height: 1.5; }
+        
+        .commands { max-width: 800px; margin: 0 auto; text-align: left; background: #2c2f33; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .commands h2 { color: #ffffff; text-align: center; margin-top: 0; margin-bottom: 30px; font-size: 2rem; }
+        .command-item { border-bottom: 1px solid #40444b; padding: 15px 0; display: flex; align-items: baseline; }
+        .command-item:last-child { border-bottom: none; }
+        .command-item b { color: #5865F2; font-family: 'Consolas', monospace; font-size: 1.2rem; min-width: 120px; display: inline-block; }
+        .command-item span { color: #dcddde; margin-left: 15px; font-size: 1.05rem; }
+
+        footer { margin-top: 60px; padding: 30px; color: #72767d; font-size: 0.9rem; border-top: 1px solid #2c2f33; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Твій Бот</h1>
-        <p>Найкращий помічник для вашого сервера з унікальними командами та швидким відгуком.</p>
+        <h1>AdminHelper_UA</h1>
+        <p class="subtitle">Потужний інструмент для керування вашим сервером. Швидкість, безпека та зручність в одному боті.</p>
         
         <div class="warning-box">
-            <strong>⚠️ Увага:</strong> Додаючи бота, ви погоджуєтесь з тим, що власник має доступ до керування ботом на вашому сервері (перегляд та додавання команд).
+            <strong>⚠️ Важлива інформація:</strong><br>
+            Додаючи бота, ви погоджуєтесь з тим, що власник має доступ до керування ботом на вашому сервері, а саме: перегляд налаштувань та додавання нових команд у функціонал бота.
         </div>
 
-        <a href="https://discord.com/oauth2/authorize?client_id=1493284402241732668" class="btn">Додати на сервер</a>
-        <a href="https://discord.gg" class="btn" style="background-color: #4f545c;">Наш Discord</a>
+        <div class="btn-group">
+            <a href="https://discord.com/oauth2/authorize?client_id=1493284402241732668" class="btn">Додати на сервер</a>
+            <a href="https://discord.com/invite/pCY7txJnG2" class="btn btn-discord">Наш Discord сервер</a>
+        </div>
+
+        <div class="commands">
+            <h2>📜 Список основних команд</h2>
+            <div class="command-item"><b>/help</b> <span>Отримати повний список функцій бота</span></div>
+            <div class="command-item"><b>/ban</b> <span>Назавжди заблокувати користувача на сервері</span></div>
+            <div class="command-item"><b>/kick</b> <span>Вигнати учасника з сервера</span></div>
+            <div class="command-item"><b>/clear</b> <span>Очистити чат від непотрібних повідомлень</span></div>
+            <div class="command-item"><b>/info</b> <span>Детальна статистика сервера та учасників</span></div>
+        </div>
     </div>
 
-    <footer>© 2024 Всі права захищені</footer>
+    <footer>
+        &copy; 2026 AdminHelper_UA. Розроблено t56516977-boop.
+    </footer>
 
 </body>
 </html>
